@@ -22,18 +22,30 @@ const Iphone1 = new Article(".png","Iphone 1","Hitech",800);
 const Iphone1 = new Article(".png","Iphone 1","Hitech",800); */
 
 function genDiv(){
-mySection = document.getElementById('container-liste-article')
+mySection = document.getElementById('articles');
 articles.forEach(art => {
 
-maDiv = document.createElement('div');
-maDiv.id = 'container-one-article';
+myDiv = document.createElement('div');
+myDiv.className = 'container-one-article';
 myImg = document.createElement('img');
-myImg.id = 'container-img';
-maDiv.style.border = '1px solid black'; //Pour mettre un border à ta div, par exemple
-myImg.setAttribute('src',art.img);
+myImg.className = 'container-img';
+myText = document.createElement('p');
+myText.className = 'container-text';
 
-maDiv.onclick = function(){alert('click !');}; //Évènement ayant lieu lors du click sur la div
-maDiv.appendChild(myImg);
-mySection.appendChild(maDiv);
-/* maDiv.appendChild(myImg); */
+
+
+myButton = document.createElement('button');
+myButton.className ='container-button';
+myButton.innerHTML = 'woua';
+
+
+myDiv.style.border = '1px solid black'; //Pour mettre un border à ta div, par exemple
+myImg.setAttribute('src',art.pic);
+myText.textContent = art.name;
+/* myDiv.onclick = function(){alert('click !');}; //Évènement ayant lieu lors du click sur la div */
+
+myDiv.appendChild(myImg);
+myDiv.appendChild(myText);
+myDiv.appendChild(myButton);
+mySection.appendChild(myDiv);
 });}

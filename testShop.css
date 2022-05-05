@@ -1,82 +1,142 @@
-*{
-    border-style: dashed;
-    border-color: brown;
+* {
+  padding: 0;
+  margin: 0;
+ /*  border-style: dashed;
+  border-color: brown; */
 }
+
 /* Navbar container */
 .navbar {
-    font-weight: bold;
-    overflow: hidden;
-    font-family: Arial;
-  }
-  
-  /* Links inside the navbar */
-  .navbar a {
-    float: right;
-    font-size: 16px;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: #255fcc;
-    ;
-  }
-  
-  /* The dropdown container */
-  .dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-  /* Dropdown button */
-  .dropdown .dropbtn {
-    font-weight: bold;
-    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: #063b9e;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    /* Important for vertical align on mobile phones */
-    margin: 0;
-    /* Important for vertical align on mobile phones */
-  }
-  
-  
-  /* Dropdown content (hidden by default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    color: #063b9e;
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    float: none;
-    color: #063b9e;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  /*******************************navbar-end*****************************/
-  header {
-    grid-column: span;
-    padding: 0px;
-    text-align: right;
-  
-  }
-.container-one-article{
-    position: relative;
-    width: 400px;
-    height: 100px;
+  font-weight: bold;
+  overflow: hidden;
+  font-family: Arial;
 }
+
+/* Links inside the navbar */
+.navbar a {
+  float: right;
+  font-size: 16px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #255fcc;
+  ;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-weight: bold;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: #063b9e;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  /* Important for vertical align on mobile phones */
+  margin: 0;
+  /* Important for vertical align on mobile phones */
+}
+
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  color: #063b9e;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: #063b9e;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*******************************navbar-end*****************************/
+header {
+  grid-column: span;
+  padding: 0px;
+  text-align: right;
+
+}
+
+section {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+#articles {
+  width: 50%;
+  display: list-item;
+  border-style: solid;
+  border-color: black;
+}
+
+#panier {
+  width: 50%;
+  border-style: solid;
+  border-color: black;
+}
+
+.container-one-article {
+  display: flex;
+  flex-direction: row;
+  
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.container-img {
+  width: 40%;
+  height: 150px;
+  padding: 0;
+  margin: 0;
+}
+.container-text{
+  width: 40%;
+  height: 150px;
+  color: black;
+  padding: 0;
+  margin: 0;
+}
+.container-button{
+  width: 20%;
+  background-color: crimson;
+  
+}
+/* .anchor-button{
+  width: 50%;
+  height: 150px;
+  margin: 0;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center; 
+}*/
