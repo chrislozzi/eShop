@@ -1,6 +1,8 @@
-/*{
-    border-style: dashed;
-    border-color: brown;
+*{
+    padding: 0px;
+    margin: 0px;
+    /*border-style: dashed;
+    border-color: brown;*/
 }
 /* Navbar container */
 .navbar {
@@ -10,20 +12,33 @@
   }
   
   /* Links inside the navbar */
-  .navbar a {
-    float: right;
+  .navbar .cart {
     font-size: 16px;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 0px 0px;
     text-decoration: none;
-    color: #255fcc;
     ;
+  }
+  .cart{
+    width: 50%;
+    border-color:black;
+    border: solid;
+    background-color: rgb(31, 31, 31);
+    display: flex;
+	  flex-direction: row;
+	  flex-wrap: nowrap;
+	  justify-content: space-between;
+	  align-items: stretch;
+	  align-content: stretch
   }
   
   /* The dropdown container */
   .dropdown {
     float: left;
     overflow: hidden;
+    width: 50%;
+    background-color: rgb(31, 31, 31); 
+    border:black;
+    border: solid;
   }
   
   /* Dropdown button */
@@ -33,14 +48,23 @@
     font-size: 16px;
     border: none;
     outline: none;
-    color: #063b9e;
-    padding: 14px 16px;
+    color: white;
+    padding: 10px;
     background-color: inherit;
     font-family: inherit;
     /* Important for vertical align on mobile phones */
     margin: 0;
     /* Important for vertical align on mobile phones */
   }
+  .navbar {
+    display: flex;
+	  flex-direction: row;
+  	flex-wrap: nowrap;
+	  justify-content: space-between;
+	  align-items: stretch;
+	  align-content: stretch;
+  }
+
   
   
   /* Dropdown content (hidden by default) */
@@ -70,10 +94,7 @@
   
   /*******************************navbar-end*****************************/
   header {
-    grid-column: span;
-    padding: 0px;
-    text-align: right;
-  
+    grid-column: span; 
   }
 .container-one-article{
     position: relative;
@@ -99,3 +120,36 @@ section {
   border-style: solid;
   border-color: black;
 }
+
+.dropbtn {
+  text-align: left;
+  width: 100%;
+}
+
+.namecart {
+  left: 0px;
+  padding: 10px;
+  margin: 0px;
+  color: white;
+}
+
+.validcart {
+  left : 10px;
+  
+}
+
+.header_top {
+  height: 50px;
+  background-color: rgb(31, 31, 31);
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+.nameshop {
+  font-size: 25px;
+  color: white;
+}
+
