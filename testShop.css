@@ -1,4 +1,4 @@
-*{
+/*{
     border-style: dashed;
     border-color: brown;
 }
@@ -79,4 +79,23 @@
     position: relative;
     width: 400px;
     height: 100px;
+}
+section {
+  height: 500px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+}
+#articles {
+  width: 50%;
+  border-style: solid;
+  border-color: black;
+}
+#panier {
+  width: 50%;
+  border-style: solid;
+  border-color: black;
 }

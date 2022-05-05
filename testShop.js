@@ -33,11 +33,11 @@ function genDiv() {
     myImg = document.createElement('img');
     myImg.id = 'img-article'
     myImg.setAttribute("src", art.pic);
-    maDiv.onclick = function () {
+    myDiv.onclick = function () {
       alert('Ajouté au panier');
     }; //Évènement ayant lieu lors du click sur la div
-    maDiv.appendChild(myImg);
-    document.body.appendChild(maDiv);
+    myDiv.appendChild(myImg);
+    document.getElementById("articles").appendChild(myDiv);
 
   });
 }
