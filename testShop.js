@@ -1,7 +1,4 @@
 // Initialise la map des articl
-function init() {
-
-}
 class Article {
   constructor(pic, name, brand, category, price) {
     this.pic = pic;
@@ -11,11 +8,11 @@ class Article {
     this.price = price;
   }
 }
-let articles = [];
+ let articles=[];
 const iphone1 = new Article("/files/iphone.png", "Iphone 1", "Apple", "Hitech", 800);
-const Mec_keyboard = new Article("files/keyboard/.png", "Mechanical keyboard", "Blackmagic Design", "Hitech", 1200);
+const Mec_keyboard = new Article("/files/keyboard.png", "Mechanical keyboard", "Blackmagic Design", "Hitech", 1200);
 const macbook2 = new Article("/files/macbook.png", "Macbook 2", "Apple", "Hitech", 680);
-const hdd_corsair1 = new Article("/files/hdd.png", "HDD Corsair1", "Corsair", "Hitech", 100);
+const hdd_corsair1 = new Article("/files/hdd.png", "HDD Corsair1", "Corsair", "Hitech", 800);
 articles.push(iphone1, Mec_keyboard, macbook2, hdd_corsair1);
 /* const Iphone1 = new Article(".png","Iphone 1","Hitech",800);
 const Iphone1 = new Article(".png","Iphone 1","Hitech",800);
@@ -24,9 +21,8 @@ const Iphone1 = new Article(".png","Iphone 1","Hitech",800);
 const Iphone1 = new Article(".png","Iphone 1","Hitech",800);
 const Iphone1 = new Article(".png","Iphone 1","Hitech",800); */
 
-function genDiv() {
-
-
+function genDiv(){
+mySection = document.getElementById('container-liste-article')
   articles.forEach(art => {
     myDiv = document.createElement('div');
     myDiv.id = 'article-container';
@@ -39,9 +35,4 @@ function genDiv() {
     myDiv.appendChild(myImg);
     document.getElementById("articles").appendChild(myDiv);
 
-  });
-}
-/*************tentative d'appel de la fonction au chargement de la page************/
-document.addEventListener('DOMContentLoaded', function genDiv() {
-
-});
+  });}
