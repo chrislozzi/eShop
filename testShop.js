@@ -1,4 +1,4 @@
-// Initialise la map des articl
+// Initialise un tableau d'objet article
 class Article {
   constructor(id, pic, name, brand, category, price) {
     this.id = id;
@@ -28,11 +28,12 @@ Storage.prototype.getObject = function(cle)
  var valeur = this.getItem(cle);
  return valeur && JSON.parse(valeur);
 }
-/************************méthode d'accès au local storage************************* */
+/************************construction des div le conteneur article************************* */
 articles.forEach(art => {
   genDiv('articles',art);
   
 });
+/************************génère une div dans le conteneur idDomObject**************************/
 function genDiv(idDomObject,article) {
   mySection = document.getElementById(idDomObject);
 
@@ -52,7 +53,7 @@ function genDiv(idDomObject,article) {
    
     myDiv.style.border = '1px solid black'; //Pour mettre un border à ta div, par exemple
     myImg.setAttribute('src', article.pic);
-    myText.textContent = article.name;
+    myText.innerHTML = article.name + "<br>"+"<br>"+article.brand+"<br>"+"<br>"+article.price+"€";
   
     myButton.onclick = function () {
       genDiv('cartcontenant',article );
@@ -71,13 +72,17 @@ function genDiv(idDomObject,article) {
   
 }
 
+displayOneCategory();
 function addToCartList(article) {
 genDiv('cartcontenant',article );
 
 }; 
-
-const allArticleDiv = document.querySelectorAll("section #articles .dropdown-content");
-for(let i = 0; i < allArticleDiv.length;i++){
-alert(allArticleDiv[i].id);
+/********************************affiche une catégory***************************/
+function displayOneCategory(){
+  const allArticleDiv = document.querySelectorAll("section #articles .container-one-article");
+  for(let i = 0; i < 2;i++){
+    if(i=2)
+  allArticleDiv[i].style.display = "none";
+  
+  }
 }
-
