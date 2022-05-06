@@ -103,7 +103,7 @@
     height: 100px;
 }
 section {
-  height: 500px;
+  height: min-content;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
