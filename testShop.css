@@ -10,6 +10,7 @@
     font-weight: bold;
     overflow: hidden;
     font-family: Arial;
+    width: 100%;
   }
   
   /* Links inside the navbar */
