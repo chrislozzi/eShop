@@ -4,7 +4,9 @@
    /* border-style: dashed;
     border-color: brown;*/
 }
-
+html{
+  background-color: rgb(31, 31, 31);
+}
 /* Navbar container */
 .navbar {
     font-weight: bold;
@@ -50,7 +52,7 @@
     font-size: 16px;
     border: none;
     outline: none;
-    color: white;
+    color: whitesmoke;
     padding: 10px;
     background-color: inherit;
     font-family: inherit;
@@ -112,13 +114,13 @@ section {
   width: 50%;
   border-style: solid;
   border-color: black;
-  background-color: rgba(222, 138, 180, 0.500);
+  background-color: rgb(244, 195, 219);
 }
 #cartcontenant {
   width: 50%;
   border-style: solid;
   border-color: black;
-  background-color: rgb(222, 138, 180, 0.500);
+  background-color: rgb(244, 195, 219);
 }
 
 .dropbtn {
@@ -130,12 +132,14 @@ section {
   left: 0px;
   padding: 10px;
   margin: 0px;
-  color: white;
+  color: whitesmoke;
 }
 
 .validcart {
   left : 10px;
-  
+  width: 150px;
+  background-color: rgb(31, 31, 31);
+  color:rgb(222, 138, 180);
 }
 
 .header_top {
@@ -150,7 +154,7 @@ section {
 }
 .nameshop {
   font-size: 25px;
-  color: white;
+  color: whitesmoke;
 }
 /***************dsiplay articles*********************/
 .container-one-article{
@@ -168,6 +172,7 @@ align-content: center; */
 
 }
 .container-img{
+  object-fit:cover ;
   position: sticky;
   width: 40%;
 }
