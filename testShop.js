@@ -1,3 +1,4 @@
+
 // Initialise un tableau d'objet article
 class Article {
   constructor(id, pic, name, brand, category, price) {
@@ -81,7 +82,7 @@ const Fiant_Punto = new Article(
   8500
 );
 
-articles.push(iphone1, Mec_keyboard, macbook2, hdd_corsair1, caviard_1kg, truffe_blanche, Fiant_Punto, Kia_rio);
+articles.push(iphone1, Mec_keyboard, macbook2, hdd_corsair1, caviard_1kg, truffe_blanche, Kia_rio, Fiant_Punto);
 
 /************************méthode d'accès au local storage************************* */
 Storage.prototype.setObjet = function (cle, objet) {
@@ -92,11 +93,14 @@ Storage.prototype.getObject = function (cle) {
   var valeur = this.getItem(cle);
   return valeur && JSON.parse(valeur);
 };
+
 /************************construction des div le conteneur article************************* */
 articles.forEach((art) => {
   genDivIntoListArticle("articles", art);
+
 });
 /************************génère une div dans la div articles**************************/
+
 function genDivIntoListArticle(idDomObject, article) {
   mySection = document.getElementById(idDomObject);
 
@@ -127,37 +131,56 @@ function genDivIntoListArticle(idDomObject, article) {
     article.price +
     "€";
 
-  myButton.onclick = function () {    
-    addToLocalStorage(article);
+  myButton.onclick = function () {
+    addToCart(article);
   };
 
   myDiv.appendChild(myImg);
   myDiv.appendChild(myText);
   myDiv.appendChild(myButton);
   mySection.appendChild(myDiv);
-  
+
 }
 
-/**************************ajout d'un article dans le panier*********************************/
-/****************************ajout dans le local storage******************************** */
-function addToLocalStorage(article){
-  if(localStorage.getItem(article.id)==null){
+/*******************************ajout d'un article dans le panier*****************************  */
+function addToCart(article) {
+
+  if (localStorage.getItem(article.id) == null) {
     localStorage.setObjet(article.id, article);
     genDivIntoCart("cartcontenant", article);
-  }else{
-    article.quantity = article.quantity+1;
-    localStorage.setObjet(article.id,article);
 
+  } else {
+
+    article.quantity = article.quantity + 1;
+    const myDiv = document.querySelector(`.article-${article.id}`)
+    myDiv.remove();
+    localStorage.setObjet(article.id, article);
     genDivIntoCart("cartcontenant", article);
+
   }
 }
-/****************************ajout dans la div cartcontenant******************************** */
-function addToCartListDiv(article) {
-  
-  genDivIntoCart("cartcontenant", article);
-  
+/********************************supprime un article du panier******************************  */
+function removeFromCart(article) {
+  if (article.quantity == 1) {
+    localStorage.removeItem(article.id);
+    const divToRemove = document.querySelector(`.article-${article.id}`);
+    divToRemove.remove();
+  } else {
+    article.quantity = article.quantity - 1;
+    const myDiv = document.querySelector(`.article-${article.id}`);
+    myDiv.remove();
+    localStorage.setObjet(article.id, article);
+    genDivIntoCart("cartcontenant", article);
+  }
+
 }
-/************************génère une div dans la div cartcontenant**************************/
+/************************génère une div dans la div cartcontenant***********************  */
+function addToCartListDiv(article) {
+
+  genDivIntoCart("cartcontenant", article);
+
+}
+
 function genDivIntoCart(idDomObject, article) {
   mySection = document.getElementById(idDomObject);
 
@@ -189,15 +212,13 @@ function genDivIntoCart(idDomObject, article) {
     "<br>" +
     "<br>" +
     article.price +
-    "€"+
+    "€" +
     "<br>" +
     "<br>" +
-    "Quantité: "+article.quantity ;
+    "Quantité: " + article.quantity;
 
   myButton.onclick = function () {
-    localStorage.removeItem(article.id);
-    const divToRemove = document.querySelector(`.article-${article.id}`);
-    divToRemove.remove();
+    removeFromCart(article);
   };
 
   myDiv.appendChild(myImg);
@@ -206,10 +227,12 @@ function genDivIntoCart(idDomObject, article) {
   mySection.appendChild(myDiv);
 }
 
+window.onunload = function () {
+	 localStorage.clear();
+   
+}
 
-
-/********************************listner du select catérorie*********************************/
-
+/********************************listner du select catérorie******************************  */
 var elt = document.querySelector('select');
 elt.addEventListener('change', (envent) => {
   const result = `${elt.value}`;
@@ -217,24 +240,66 @@ elt.addEventListener('change', (envent) => {
 })
 
 
-
-/********************************affiche une catégorie***************************/
-//a retoucher pb
+/********************************affiche les articles d'une catégorie**************************  */
 function displayOneCategory(category) {
   
+   allArticleDiv = document.querySelectorAll("section #articles .container-one-article");
+   
+   allArticleDiv.forEach((catDiv) => {
+
+    catDiv.style.display ='none';
+     console.log(catDiv.classList.contains("category-"+category));
+     
+    if((catDiv.classList.contains("category-"+category))) {
+      catDiv.style.display="flex";
+    }else if(category=='all'){
+      catDiv.style.display ='flex';
+    }
+     
   
-  const allArticleDiv = document.querySelectorAll("section #articles .container-one-article");
-  
-  for (let i = 0; i < allArticleDiv.length; i++) {
-    console.log(category);
-    console.log(allArticleDiv[i].classList.contains('category-'+ 'car'));
-    if ((!allArticleDiv[i].classList.contains('category-'+category)))
-      allArticleDiv[i].style.display = "none";
-  }
+  });
+    
+
+/*   for(let i = 0; i < allArticleDiv.length ; i++){
+    console.log(allArticleDiv[i].classList.contains("category-"+category));
+    if(!allArticleDiv[i].classList.contains("category-"+category))
+      allArticleDiv[i].style.display='none';
+  } */
+   
 }
-/***********************************validation order******************************/
 
 
-function displayOrder(){
+/********************************listner du bouton order*********************************/
 
+const catBtn = document.querySelector('button');
+catBtn.addEventListener('click', (envent) => {
+  displayOrder();
+})
+
+/***********************************affichage de la commande******************************/
+
+function displayOrder() {
+  const myOrder = document.querySelector("section #order");
+  var total = 0;
+  var text = "";
+  for (let i = 1; i <= localStorage.length; i++) {
+    total += localStorage.getObject(i).quantity * localStorage.getObject(i).price;
+  }
+
+  document.querySelector("section #articles").style.display = "none";
+  document.querySelector("section #cartcontenant").style.display = "none";
+  text = "Total order : " + total +"€";
+  myOrder.innerHTML = "Total order : " + total +"€";
+  myOrder.style.display = "block";
+  validateOrder(text)
+}
+/***********************************validation de la commande******************************/
+function validateOrder(textTotal) {
+  let text = textTotal+"\n Press ok to order!\n or Cancel.";
+  if (confirm(text) == true) {
+    text = "Thank you for your purchase";
+  } else {
+    text = "You canceled your order, get back to the Amazing Shop!";
+  }
+  document.getElementById("order").innerHTML = text;
 }
